@@ -1,7 +1,7 @@
 package com.pranav.jdbc;
 
 public class Main {
-    public static void main(String[] args) {
+    static void main() {
         System.out.println("JDBC setup ready");
     }
 }
