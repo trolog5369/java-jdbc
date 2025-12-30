@@ -67,7 +67,7 @@ This repository exists to:
 
 - Follow a structured JDBC tutorial
 - Write every line of code manually
-- Test queries directly in the database
+- com.pranav.jdbc.Test queries directly in the database
 - Break and fix code to understand failure cases
 - Commit progress incrementally
 
