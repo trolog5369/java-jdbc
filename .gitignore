@@ -1,13 +1,11 @@
-# IntelliJ IDEA
+# IntelliJ
 .idea/
 *.iml
 
-# Build output
+# Compiled output
 out/
 *.class
 
-# OS files
+# OS / Logs
 .DS_Store
-
-# Logs
 *.log
