@@ -25,8 +25,8 @@ public class JavaToMysql {
 
 //        2.Create Connection
         String url = "jdbc:mysql://localhost:3306/mydatabase";
-        String username = "root";
-        String password = "Pranav@9615";
+        String username = "your_username";
+        String password = "your_password";
         String query="Select * from employees;";
 
         try {

@@ -35,8 +35,8 @@ public class ConnectingMySQL {
 //        This is the connection String remove ?user=root and input the database we want to connect
 
         String url="jdbc:mysql://localhost:3306/mydatabase";
-        String username="root";//your username
-        String password="Pranav@9615";//your password
+        String username="your_username";//your username
+        String password="your_password";//your password
 
 //        To establish the connection we will use again try and catch blocks
 //        try{
