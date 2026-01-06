@@ -1,5 +1,6 @@
 mysql> use mydatabase;
 Database changed
+
 mysql> select * from employees;
 +----+--------+--------------------+--------+
 | id | name   | job_title          | salary |
@@ -8,6 +9,7 @@ mysql> select * from employees;
 |  2 | Hemant | Devops Engineer    |  65000 |
 +----+--------+--------------------+--------+
 2 rows in set (0.00 sec)
+
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -20,6 +22,7 @@ mysql> show databases;
 | sys                |
 +--------------------+
 6 rows in set (0.00 sec)
+
 mysql> select * from employees;
 +----+---------+----------------------+--------+
 | id | name    | job_title            | salary |
@@ -29,6 +32,3 @@ mysql> select * from employees;
 |  3 | Harshit | Full Stack Developer |  87000 |
 +----+---------+----------------------+--------+
 3 rows in set (0.00 sec)
-
-mysql>
-
