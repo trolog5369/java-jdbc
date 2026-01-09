@@ -17,7 +17,6 @@ public class HotelReservationSystem {
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
-            Statement statement = connection.createStatement();
             Scanner scanner = new Scanner(System.in);
 
 
@@ -36,19 +35,19 @@ public class HotelReservationSystem {
 
                 switch (choice) {
                     case 1:
-                        reserveRoom(scanner, connection, statement);
+                        reserveRoom(scanner, connection);
                         break;
                     case 2:
-                        viewReservation(scanner, connection, statement);
+                        viewReservation(scanner, connection);
                         break;
                     case 3:
-                        getRoomNumber(scanner, connection, statement);
+                        getRoomNumber(scanner, connection);
                         break;
                     case 4:
-                        updateReservation(scanner, connection, statement);
+                        updateReservation(scanner, connection);
                         break;
                     case 5:
-                        deleteReservation(scanner, connection, statement);
+                        deleteReservation(scanner, connection);
                         break;
                     case 0:
                         Exit();
@@ -66,7 +65,7 @@ public class HotelReservationSystem {
         }
     }
 
-    private static void reserveRoom(Scanner scanner, Connection connection, Statement statement) {
+    private static void reserveRoom(Scanner scanner,Connection connection) {
         System.out.println("Enter Guest name: ");
         String guestName = scanner.next();
 
@@ -79,7 +78,7 @@ public class HotelReservationSystem {
         String sql = "INSERT INTO reservations (guest_name, room_number, contact_number) " +
                 "VALUES('" + guestName + "'," + roomNumber + ",'" + contactNumber + "')";
 
-        try (statement) {
+        try (Statement statement=connection.createStatement()) {
             int rowsAffected = statement.executeUpdate(sql);
             if (rowsAffected > 0) {
                 System.out.println("Reservation successful");
@@ -92,9 +91,10 @@ public class HotelReservationSystem {
 
     }
 
-    private static void viewReservation(Scanner scanner, Connection connection, Statement statement) throws SQLException {
+    private static void viewReservation(Scanner scanner, Connection connection) throws SQLException {
         String query = "SELECT reservation_id, guest_name, room_number, contact_number, reservation_date FROM reservations;";
-        try (ResultSet resultSet = statement.executeQuery(query)) {
+        try (Statement statement=connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(query)) {
             System.out.println("Current Reservation: ");
 
             while (resultSet.next()) {
@@ -117,17 +117,17 @@ public class HotelReservationSystem {
 
     }
 
-    private static void getRoomNumber(Scanner scanner, Connection connection, Statement statement) {
+    private static void getRoomNumber(Scanner scanner, Connection connection) {
         System.out.println("Enter reservation id: ");
         int reservationId = scanner.nextInt();
         System.out.println("Enter guest name: ");
         String guestName = scanner.next();
 
-        String sql = "SELECT room_number FROM reservations" +
-                "WHERE reservation_id = " + reservationId +
-                "AND guest_name= '" + guestName + "';";
+        String sql = "SELECT room_number FROM reservations " +
+                "WHERE reservation_id = " + reservationId + " AND guest_name = '" + guestName + "';";
 
-        try (ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Statement statement=connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
             if (resultSet.next()) {
                 int roomNumber = resultSet.getInt("room_number");
                 System.out.println("The Room number for reservation id: " + reservationId + " and guest name: " + guestName +
@@ -141,11 +141,11 @@ public class HotelReservationSystem {
 
     }
 
-    private static void updateReservation(Scanner scanner, Connection connection, Statement statement) throws SQLException {
+    private static void updateReservation(Scanner scanner, Connection connection) throws SQLException {
         System.out.println("Enter the ID you want to update: ");
         int reservationId = scanner.nextInt();
 
-        if (!reservationExists(connection, statement, reservationId)) {
+        if (!reservationExists(connection, reservationId)) {
             System.out.println("Reservation not found for given ID.");
             return;
         }
@@ -162,7 +162,7 @@ public class HotelReservationSystem {
                 "contact_number = '" + newContactNumber + "' " +
                 "WHERE reservation_id= " + reservationId;
 
-        try (statement) {
+        try (Statement statement=connection.createStatement()) {
             int rowsAffected = statement.executeUpdate(sql);
 
             if (rowsAffected > 0) {
@@ -176,18 +176,18 @@ public class HotelReservationSystem {
 
     }
 
-    private static void deleteReservation(Scanner scanner, Connection connection, Statement statement) {
+    private static void deleteReservation(Scanner scanner, Connection connection) {
         System.out.println("Enter the id you want to delete: ");
         int deleteId = scanner.nextInt();
 
-        if (!reservationExists(connection, statement, deleteId)) {
+        if (!reservationExists(connection, deleteId)) {
             System.out.println("Reservation not found for given ID.");
             return;
         }
 
         String sql = "DELETE FROM reservations WHERE reservation_id= " + deleteId;
 
-        try (statement) {
+        try (Statement statement=connection.createStatement()) {
             int rowsAffected = statement.executeUpdate(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -195,10 +195,11 @@ public class HotelReservationSystem {
 
     }
 
-    private static boolean reservationExists(Connection connection, Statement statement, int id) {
+    private static boolean reservationExists(Connection connection, int id) {
         String sql = "SELECT reservation_id FROM reservations WHERE reservation_id= " + id;
 
-        try (ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Statement statement=connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql)) {
             return resultSet.next(); //if there's a result,reservation exists
         } catch (SQLException e) {
             System.out.println(e.getMessage());
