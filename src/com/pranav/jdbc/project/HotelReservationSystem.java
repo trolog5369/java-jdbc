@@ -168,7 +168,7 @@ public class HotelReservationSystem {
             if (rowsAffected > 0) {
                 System.out.println("Reservation updated successfully!");
             } else {
-                System.out.println("Inundation failed!");
+                System.out.println("Reservation failed!");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -195,7 +195,7 @@ public class HotelReservationSystem {
 
     }
 
-    private static boolean reservationExists(Connection connection, int id) {
+    public static boolean reservationExists(Connection connection, int id) {
         String sql = "SELECT reservation_id FROM reservations WHERE reservation_id= " + id;
 
         try (Statement statement=connection.createStatement();
