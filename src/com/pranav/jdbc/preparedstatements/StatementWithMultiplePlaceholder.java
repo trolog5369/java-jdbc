@@ -17,6 +17,12 @@ public class StatementWithMultiplePlaceholder {
 
         String query="Select * from employees WHERE name = ? AND job_title = ?";
 
+//        We can also run multiple queries just add the set[var_type] accordingly for this query
+//        String query="Select * from employees WHERE name=? AND job_title=? AND salary=?";
+//        preparedStatement.setString(1,"Hemant"); As name is in String and its parameter index is 1
+//        preparedStatement.setString(2, "Full Stack Developer"); As job_title is in String and its parameter index is 2
+//        preparedStatement.setDouble(3,70000); As salary is in Double and its parameter index is 3
+
         try{
             Connection connection= DriverManager.getConnection(url,username,password);
             System.out.println("Connection established!");
@@ -30,6 +36,7 @@ public class StatementWithMultiplePlaceholder {
             preparedStatement.setString(2,"Full Stack Developer");
 
             ResultSet resultSet=preparedStatement.executeQuery();
+//            Used executeQuery as we're retrieving data from the database not Performing operations(Insertion,delete,update)
 
             while (resultSet.next()){
                 int id=resultSet.getInt("id");
