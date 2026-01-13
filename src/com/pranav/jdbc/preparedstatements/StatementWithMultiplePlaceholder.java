@@ -12,8 +12,8 @@ public class StatementWithMultiplePlaceholder {
         }
 
         String url="jdbc:mysql://localhost:3306/mydatabase";
-        String username="root";
-        String password="Pranav@9615";
+        String username="your_username";
+        String password="your_password";
 
         String query="Select * from employees WHERE name = ? AND job_title = ?";
 
@@ -36,7 +36,7 @@ public class StatementWithMultiplePlaceholder {
             preparedStatement.setString(2,"Full Stack Developer");
 
             ResultSet resultSet=preparedStatement.executeQuery();
-//            Used executeQuery as we're retrieving data from the database not Performing operations(Insertion,delete,update)
+//          Used executeQuery as we're retrieving data from the database not Performing operations(Insertion,delete,update)
 
             while (resultSet.next()){
                 int id=resultSet.getInt("id");

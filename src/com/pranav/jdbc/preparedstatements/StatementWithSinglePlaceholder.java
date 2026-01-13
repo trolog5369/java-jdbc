@@ -11,8 +11,8 @@ public class StatementWithSinglePlaceholder {
             }
 
             String url="jdbc:mysql://localhost:3306/mydatabase";
-            String username="root";
-            String password="Pranav@9615";
+            String username="your_username";
+            String password="your_password";
 
             String query="Select * from employees where name= ?";
 //        ? is a placeholder, and we have to give value to the placeholder using the set[vartype]() ie pass the arguments(values)
