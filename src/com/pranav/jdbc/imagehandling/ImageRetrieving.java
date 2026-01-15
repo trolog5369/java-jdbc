@@ -13,8 +13,8 @@ public class ImageRetrieving {
         }
 
         String url = "jdbc:mysql://localhost:3306/mydatabase";
-        String username = "root";
-        String password = "Pranav@9615";
+        String username = "your_username";
+        String password = "your_password";
 //        String image_Path="C:\\Users\\Pranav\\Desktop\\image\\14378151.png";
 
 //        We have to add \\ so that the image get saved inside this location

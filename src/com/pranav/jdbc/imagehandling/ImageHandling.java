@@ -17,8 +17,8 @@ public class ImageHandling {
         }
 
         String url = "jdbc:mysql://localhost:3306/mydatabase";
-        String username = "root";
-        String password = "Pranav@9615";
+        String username = "your_username";
+        String password = "your_password";
         String image_path="C:\\Users\\Pranav\\Desktop\\image\\14378151.png";
 
 //        Query for inserting image into Database using prepared statements
