@@ -15,8 +15,8 @@ public class BatchProcessingPreparedStatement {
         }
 
         String url = "jdbc:mysql://localhost:3306/mydatabase";
-        String username = "root";
-        String password = "Pranav@9615";
+        String username = "your_username";
+        String password = "your_password";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
