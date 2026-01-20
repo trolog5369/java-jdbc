@@ -59,7 +59,7 @@ CREATE TABLE reservations (
 ## ⚙️ Project Structure
 
 ```text
-com.pranav.jdbc.project
+com.pranav.jdbc.projecthotelmanagement
 └── HotelManagementUpgraded.java
 ```
 ## 🔧 Setup Instructions

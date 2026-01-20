@@ -1,4 +1,4 @@
-package com.pranav.jdbc.project;
+package com.pranav.jdbc.projecthotelmanagement;
 
 import java.sql.*;
 import java.util.Scanner;

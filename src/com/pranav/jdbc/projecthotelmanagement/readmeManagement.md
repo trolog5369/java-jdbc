@@ -61,7 +61,7 @@ reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ## ⚙️ Project Structure
 
 ```text
-com.pranav.jdbc.project
+com.pranav.jdbc.projecthotelmanagement
 └── HotelReservationSystem.java
 ```
 ## 🔧 Setup Instructions 
