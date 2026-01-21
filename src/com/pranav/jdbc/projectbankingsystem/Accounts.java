@@ -13,45 +13,29 @@ public class Accounts {
         this.scanner=scanner;
     }
     public long openAccount(String email) throws SQLException {
-
-        if (!account_exist(email)){
-            scanner.nextLine();
-
+        if (!account_exist(email)) {
             System.out.print("Full Name: ");
-            String fullName=scanner.nextLine();
+            String fullName = scanner.nextLine();
+            System.out.print("Enter initial amount: ");
+            double balance = scanner.nextDouble();
+            scanner.nextLine(); // Fixed: Buffer clear before reading Pin
+            System.out.print("Enter security pin: ");
+            String securityPin = scanner.nextLine();
 
-            System.out.println("Enter initial amount: ");
-            double balance=scanner.nextDouble();
+            String query = "INSERT INTO accounts(account_number, full_name, email, balance, security_pin) VALUES(?,?,?,?,?)";
+            long accountNumber = generateAccountNumber();
 
-            System.out.println("Enter security pin: ");
-            String securityPin=scanner.nextLine();
-
-            String openAccountQuery="INSERT INTO accounts(account_number, full_name, email, balance, security_pin)VALUES(?,?,?,?,?)";
-
-            try(PreparedStatement preparedStatement=connection.prepareStatement(openAccountQuery);){
-                long accountNumber=generateAccountNumber();
-
-                preparedStatement.setLong(1,accountNumber);
-                preparedStatement.setString(2,fullName);
-                preparedStatement.setString(3,email);
-                preparedStatement.setDouble(4,balance);
-                preparedStatement.setString(5,securityPin);
-
-                int rowsAffected=preparedStatement.executeUpdate();
-
-                if (rowsAffected>0){
-                    return accountNumber;
-                }else {
-                    System.out.println("Account creation failed!!");
-                }
-
-            }catch(SQLException e){
-                System.out.println(e.getMessage());
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                ps.setLong(1, accountNumber);
+                ps.setString(2, fullName);
+                ps.setString(3, email);
+                ps.setDouble(4, balance);
+                ps.setString(5, securityPin);
+                ps.executeUpdate();
+                return accountNumber;
             }
-        }else {
-            System.out.println("Account already exists!");
         }
-        throw new RuntimeException("Account do not exist!");
+        return 0; // Fixed: Return 0 instead of crashing with an exception
     }
 
 
