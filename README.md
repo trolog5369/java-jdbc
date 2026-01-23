@@ -1,102 +1,106 @@
-# Java JDBC — Database Connectivity with Java
+# Java JDBC — Foundation of Database Interaction in Java
 
 ## Overview
 
-This repository documents my **hands-on learning of JDBC (Java Database Connectivity)**.
-The focus is on understanding **how Java applications interact with relational databases**, not just writing working code.
+This repository represents the **completion of my hands-on learning phase of JDBC (Java Database Connectivity)**.
 
-JDBC is a **core backend skill** and serves as a foundation for:
-- Spring Boot
-- Hibernate / JPA
-- Real-world backend systems
+The goal was **not** to build flashy applications, but to deeply understand:
+- how Java talks to a relational database
+- how SQL execution actually works under the hood
+- what higher-level frameworks abstract away
 
-This repository is part of my **Java → Backend → Full Stack** learning path.
+This repository now stands as a **closed foundation layer** in my backend engineering journey.
 
 ---
 
 ## Why This Repository Exists
 
-Many developers use frameworks without understanding what happens underneath.
+Most developers jump straight into frameworks like Spring Boot and Hibernate without understanding what they are abstracting.
 
-This repository exists to:
-- Learn **raw database interaction** using Java
-- Understand how SQL and Java communicate
-- Build confidence before moving to ORM frameworks
-- Avoid treating databases as a black box
+I deliberately built this repository to:
+- work with **raw JDBC**
+- understand database connections, queries, and result handling
+- learn **failure cases**, not just success paths
+- build confidence before moving to ORM and backend frameworks
+
+This repo answers one question clearly:
+
+> *“Do you actually understand database interaction in Java — or are you just using magic?”*
 
 ---
 
-## Topics Covered
+## Concepts Implemented
 
-> This is a **progressive repository** and will grow with time.
-
-### Core JDBC Concepts
-- What JDBC is and why it exists
+### JDBC Core
 - JDBC architecture and drivers
-- Connecting Java to a database
-- `DriverManager` and `Connection`
+- Establishing database connections using `DriverManager`
+- Managing `Connection` lifecycle
 
-### SQL Operations with JDBC
+### SQL Execution
 - `Statement` vs `PreparedStatement`
-- Executing queries
-- Executing updates
-- Handling `ResultSet`
+- Parameterized queries
+- Executing queries and updates
+- Processing `ResultSet`
 
 ### CRUD Operations
-- Insert data
-- Read data
-- Update data
-- Delete data
+- Insert, Read, Update, Delete
+- Validation before update/delete
+- Query-based data retrieval
 
-### Best Practices
-- Preventing SQL Injection
+### Best Practices Learned
+- SQL injection prevention
 - Resource management
 - Exception handling
-- Clean database access patterns
+- Clean and readable database access code
 
 ---
 
 ## Database Used
 
-- **MySQL** (primary)
-- SQL concepts are transferable to other relational databases
+- **MySQL**
+- Concepts are transferable to any relational database system
 
 ---
 
-## Learning Approach
+## Learning Methodology
 
-- Follow a structured JDBC tutorial
-- Write every line of code manually
-- com.pranav.jdbc.Test queries directly in the database
-- Break and fix code to understand failure cases
-- Commit progress incrementally
+- Followed structured learning material
+- Typed every line of code manually
+- Tested queries directly in the database
+- Intentionally broke code to understand errors
+- Committed progress incrementally
 
-This is **learning by building**, not note-taking.
-
----
-
-## How This Fits into My Backend Journey
-
-This repository prepares me for:
-- Spring Boot REST APIs
-- Hibernate / JPA
-- Real backend projects with persistent data
-
-JDBC understanding makes backend frameworks **predictable and debuggable**.
+This repository reflects **learning by building**, not copy-pasting.
 
 ---
 
-## Status
+## Project Status
 
-🟡 **In Progress**
+🟢 **Completed**
 
-This repository will evolve as more JDBC concepts are implemented.
+No new features will be added here.
+
+This repository now serves as:
+- a reference point
+- a proof of fundamentals
+- a stable base for future backend projects
+
+---
+
+## What Comes Next
+
+With JDBC fundamentals completed, I am now building **independent backend systems** where:
+- JDBC knowledge is applied, not showcased
+- focus shifts to **system design**, **business logic**, and **architecture**
+- frameworks are used consciously, not blindly
+
+Active development continues in newer repositories.
 
 ---
 
 ## Author
 
 **Pranav Gaikwad**  
-IT Undergraduate | Java Backend & Full Stack Developer in Progress
+IT Undergraduate | Backend Engineer in Progress  
 
-> *Understand the foundation, then build abstractions.*
+> *Master the fundamentals once — then build systems that scale.*
